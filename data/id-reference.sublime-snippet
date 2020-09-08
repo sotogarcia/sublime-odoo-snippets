@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+ref('${1:record.external.id}')${0}
+]]></content>
+    <tabTrigger>id</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Database ID from external ID conversion</description>
+</snippet>

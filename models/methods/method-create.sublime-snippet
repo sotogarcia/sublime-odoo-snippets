@@ -1,0 +1,19 @@
+<snippet>
+    <content><![CDATA[
+@api.model
+def create(self, values):
+    """
+        Create a new record for a model ${1:ModelName}
+        @param values: provides a data for new record
+
+        @return: returns a id of new record
+    """
+
+    result = super(${1:Model_Name}, self).create(values)${0}
+
+    return result
+]]></content>
+    <tabTrigger>crud</tabTrigger>
+    <scope>source.python</scope>
+    <description>create method signature</description>
+</snippet>

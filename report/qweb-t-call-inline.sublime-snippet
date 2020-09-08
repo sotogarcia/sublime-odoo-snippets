@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+<t t-call="${1:template}" />${0}
+]]></content>
+    <tabTrigger>t-call</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Qweb inline call template</description>
+</snippet>

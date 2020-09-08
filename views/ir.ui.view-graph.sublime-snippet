@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+<graph string="${1:Graph title}" type="${2:one # bar # pie # line # pivot}">
+    <field type="row" name="${3:row_field}" />
+    <field type="col" name="${4:col_field}" interval="month" />
+    <field type="measure" name="${5:measure_field}" />
+</graph>${0}
+]]></content>
+    <tabTrigger>graph</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common graph tag to be added inside a ir.ui.view</description>
+</snippet>
+

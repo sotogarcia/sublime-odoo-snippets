@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+<field name="${1:name}"><![CDATA[
+    ${2:content}
+]]${-1}></field>${0}
+]]></content>
+    <tabTrigger>fields.Html</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common XML tag for field type Html</description>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+<field name="${1:name}" ref="${2:ir.model}" />${0}
+]]></content>
+    <tabTrigger>fields.Many2one</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common XML tag for field type Many2one</description>
+</snippet>

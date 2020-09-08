@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+${1:field_name} = fields.Selection(
+    string='${2:${1/((^.)|(_(.)))/(?2:\u$2)(?3:\ $4)/g}}',
+    required=${3:False},
+    readonly=${4:False},
+    index=${5:False},
+    default=${6:False},
+    help=${7:False},
+    selection=[('${8:valor1}', '${9:${8/(.)(.+)/\u$1$2/g}}'), ('${10:valor2}', '${11:${10/(.)(.+)/\u$1$2/g}}')]
+)${0}
+]]></content>
+    <tabTrigger>fields.Selection</tabTrigger>
+    <scope>source.python</scope>
+    <description>Common definition for field type Seleccion</description>
+</snippet>

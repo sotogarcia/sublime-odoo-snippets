@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+<record id="${3/(\.+)/_/g}_${1/(\.+)/_/g}" model="ir.model.data">
+    <field name="name">${1:resource_external_id}</field>
+    <field name="model">${2:model.name}</field>
+    <field name="module">${3:module_name}</field>
+    <field name="date_init" eval="${4:time.strftime('%Y-%m-%d %H:%M:%S')}" />
+    <field name="date_update" eval="${5:time.strftime('%Y-%m-%d %H:%M:%S')}" />
+    <field name="res_id" eval="${6:1}" />
+    <field name="noupdate" eval="${7:True}" />
+</record>${0}
+]]></content>
+    <tabTrigger>ir.model.data</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common record definition for ir.model.data</description>
+</snippet>

@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+${1:field_name} = fields.Char(
+    string='${2:${1/((^.)|(_(.)))/(?2:\u$2)(?3:\ $4)/g}}',
+    required=${3:False},
+    readonly=${4:False},
+    index=${5:False},
+    default=${6:None},
+    help=${7:False},
+    size=${8:50},
+    translate=${9:True}
+)${0}
+]]></content>
+    <tabTrigger>fields.Char</tabTrigger>
+    <scope>source.python</scope>
+    <description>Common definition for field type Char</description>
+</snippet>

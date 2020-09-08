@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+<notebook>
+    ${0}
+</notebook>
+]]></content>
+    <tabTrigger>notebook</tabTrigger>
+    <scope>text.xml</scope>
+</snippet>

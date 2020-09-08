@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+<record id="${2:${1/(\.+)/\_/g}}" model="${1:model.name}">
+    ${0}
+</record>
+]]></content>
+    <tabTrigger>record</tabTrigger>
+    <scope>text.xml</scope>
+</snippet>

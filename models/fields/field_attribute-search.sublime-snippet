@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+${1:model_obj}.search(${2:args}${5:, offset=${4:0}}${7:, limit=${6:None}}${10:, order=${9:None}}${12:, context=${11:None}}${14:, count=${13:False}})
+]]></content>
+    <tabTrigger>fullsearch</tabTrigger>
+    <scope>source.python</scope>
+    <domain>Full search method</domain>
+</snippet>

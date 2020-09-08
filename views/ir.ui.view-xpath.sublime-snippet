@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[
+<xpath expr="${1://field[@name='name']}" position="${2:after}">
+    ${0}
+</xpath>
+]]></content>
+    <tabTrigger>xpath</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common xpath tag to be added inside a ir.ui.view</description>
+</snippet>

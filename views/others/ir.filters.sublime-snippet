@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+<record id="${7:filter_${2/(\.)/\_/g}_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}}" model="ir.filters">
+    <field name="name">${1:Human readable name}</field>
+    <field name="model_id">${2:model_name_whithout_module}</field>
+    <field name="user_id" eval="${3:False}"/>
+    <field name="domain">${4:[]}</field>
+    <field name="context">${5:{}}</field>
+    <field name="is_default" eval="${6:False}" />
+    <!-- <field name="action_id" ref="" /> -->
+</record>${8}
+]]></content>
+    <tabTrigger>ir.filters</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common ir.filters record definition</description>
+</snippet>

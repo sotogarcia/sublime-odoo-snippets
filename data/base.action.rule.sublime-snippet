@@ -1,0 +1,23 @@
+<snippet>
+    <content><![CDATA[
+<record id="${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}" model="base.action.rule">
+    <field name="name">${1:Human readable name}</field>
+    <field name="active" eval="${2:True}" />
+    <field name="sequence" eval="${3:0}" />
+    <field name="server_action_ids" eval="[(4, ref('${4:ir.actions.server}'))]" />
+    <field name="model_id" ref="${5:ir.model}" />
+    <field name="kind">${6:on_create_or_write}</field>
+    <field name="trg_date_id" ref="${7:ir.model.fields}" />
+    <field name="trg_date_range" eval="${8:0}" />
+    <field name="trg_date_range_type">${9:day}</field>${11:
+    <field name="trg_date_calendar_id" ref="${10:resource.calendar}" />}${13:
+    <field name="filter_id" ref="${12:ir.filters}" />}${15:
+    <field name="filter_pre_id" ref="${14:ir.filters}" />}${17:
+    <field name="act_user_id" ref="${16:base.user_root}" />}${19:
+    <field name="act_followers" eval="[(4, ref('${18:res.partner}'))]" />}
+</record>${0}
+]]></content>
+    <tabTrigger>base.action.rule</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common record definition for base.action.rule</description>
+</snippet>

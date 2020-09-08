@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+<page string="${1:Title}" class="${2:oe_page_${1/(([a-zA-Z])|([^A-Za-z]))/(?2:\l$2)(?3:\_)/g}}" accesskey="${3:${1/(^.)(.*)/\U\1/g}}">
+    ${0}
+</page>
+]]></content>
+    <tabTrigger>page</tabTrigger>
+    <scope>text.xml</scope>
+</snippet>

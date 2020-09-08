@@ -1,0 +1,21 @@
+<snippet>
+    <content><![CDATA[
+@api.multi
+def unlink(self):
+    """
+        Delete all record(s) from recordset
+        return True on success, False otherwise
+
+        @return: True on success, False otherwise
+
+        #TODO: process before delete resource
+    """
+
+    result = super(${1:ModelName}, self).unlink()${0}
+
+    return result
+]]></content>
+    <tabTrigger>crud</tabTrigger>
+    <scope>source.python</scope>
+    <description>unlink method signature</description>
+</snippet>

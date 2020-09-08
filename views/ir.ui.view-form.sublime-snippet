@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[
+<form string="${1:Caption}" create="${2:1}" delete="${3:1}" edit="${4:1}">
+    <sheet>
+        <div class="oe_title">
+            <label for="${5:name}" class="oe_edit_only" />
+            <h1><field name="${5}" placeholder="${7:Describe the item...}" /></h1>
+        </div>
+        ${0}
+    </sheet>
+</form>
+]]></content>
+    <tabTrigger>form</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common form tag to be added inside a ir.ui.view</description>
+</snippet>

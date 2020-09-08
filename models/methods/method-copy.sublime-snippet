@@ -1,0 +1,20 @@
+<snippet>
+    <content><![CDATA[
+@api.one
+def copy(self, default=None):
+    """
+        Create a new record in ${1:ModelName} model from existing one
+        @param default: dict which contains the values to be override during
+        copy of object
+
+        @return: returns a id of newly created record
+    """
+
+    result = super(${1:ModelName}, self).copy(default)${0}
+
+    return result
+]]></content>
+    <tabTrigger>def</tabTrigger>
+    <scope>source.python</scope>
+    <description>copy method signature</description>
+</snippet>
