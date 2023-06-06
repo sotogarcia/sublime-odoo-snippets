@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[
+<record id="view_${2/[^a-z]+/\_/g}_wizard" model="ir.ui.view">
+    <field name="name">${1:Human readable name}</field>
+    <field name="model">${2:model.name}</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="${3:16}" />
+    <field name="active" eval="${4:True}" />
+    <field name="arch" type="xml">
+        <form string="Facility reporting wizard" create="1" delete="1" edit="1">
+
+            <header />
+
+            <group col="4">
+                ${0}
+            </group>
+
+            <footer />
+
+        </form>
+    </field>
+</record>
+
+<record id="action_${2/[^a-z]+/\_/g}_wizard_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">${1/(.)/\1/g}</field>
+    <field name="res_model">${2/(.)/\1/g}</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+</record>
+
+<!-- Main menu for model.name -->
+<record id="menu_${2/[^a-z]+/\_/g}_wizard" model="ir.ui.menu" >
+    <field name="name">${1/(.)/\1/g}</field>
+    <field name="sequence" eval="20" />
+    <field name="action" ref="action_${2/[^a-z]+/\_/g}_${3}_act_window" />${6:
+    <field name="parent_id" ref="${5:base.menu_custom}" />}${8:
+    <field name="groups_id" eval="[(4, ref('${7:base.group_user}'))]"/>}
+</record>
+
+]]></content>
+    <tabTrigger>wizard</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common ir.ui.view record definition</description>
+</snippet>

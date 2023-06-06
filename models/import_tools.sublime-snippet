@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+from odoo.tools import safe_eval${0}
+]]></content>
+    <tabTrigger>tools</tabTrigger>
+    <scope>source.python</scope>
+</snippet>
+
+

@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+from odoo.osv.expression import${1: AND,}${2: OR,}${3: TRUE_DOMAIN,}${4: FALSE_DOMAIN}${0}
+]]></content>
+    <tabTrigger>expression</tabTrigger>
+    <scope>source.python</scope>
+</snippet>
+
+

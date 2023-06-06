@@ -1,0 +1,7 @@
+<snippet>
+    <content><![CDATA[
+<separator ${2:colspan="${1:2}"}${4: string="${3:Caption text}"} />${0}
+]]></content>
+    <tabTrigger>separator</tabTrigger>
+    <scope>text.xml</scope>
+</snippet>

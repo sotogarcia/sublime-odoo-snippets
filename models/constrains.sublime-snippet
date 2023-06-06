@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+@api.constrains('${1:depends}')
+def _check_${1}(self):
+    message = _('Invalid field value')
+
+    for record in self:
+        if not record.${1}:
+            raise ValidationError(message)
+${0}
+]]></content>
+    <tabTrigger>constrains</tabTrigger>
+    <scope>source.python</scope>
+    <description>Module python constrains</description>
+</snippet>

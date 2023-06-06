@@ -1,0 +1,40 @@
+<snippet>
+    <content><![CDATA[
+<record id="res_config_settings_view_form" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.inherit.academy.tests</field>
+    <field name="model">res.config.settings</field>
+    <field name="priority" eval="20" />
+    <field name="inherit_id" ref="base.res_config_settings_view_form" />
+    <field name="arch" type="xml">
+        <xpath expr="//div[hasclass('settings')]" position="inside">
+            <div class="app_settings_block" data-string="${1:Human readable name}"
+                 data-key="${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\-)/g}" groups="base.group_system" >
+
+                <div name="${2/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}_settings">
+                    <h2>${2:Human readable name}</h2>
+                    <div class="row mt16 o_settings_container" name="file">
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">
+                                    ${3:Human readable name}
+                                </span>
+                                <div class="text-muted">
+                                    ${4:${3/(.)/\1/g} attribute values}
+                                </div>
+                                ${0}
+                            </div> <!-- pane -->
+                        </div> <!-- col -->
+
+                    </div> <!-- row -->
+
+                </div>
+            </div>
+        </xpath>
+    </field>
+</record>
+]]></content>
+    <tabTrigger>res.config.settings</tabTrigger>
+    <scope>text.xml</scope>
+    <description>ResConfigSettings extension</description>
+</snippet>

@@ -1,0 +1,18 @@
+<snippet>
+    <content><![CDATA[
+    def name_get(self):
+        result = []
+
+        for record in self:
+            ${0:name = record.name}
+
+            result.append((record.id, name))
+
+        return result
+
+]]></content>
+    <tabTrigger>name_get</tabTrigger>
+    <scope>source.python</scope>
+</snippet>
+
+

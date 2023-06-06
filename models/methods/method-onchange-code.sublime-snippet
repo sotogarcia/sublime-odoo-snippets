@@ -1,6 +1,5 @@
 <snippet>
 	<content><![CDATA[
-@api.one
 @api.onchange('${1:field}')
 def _onchange_${1}(self):
     ${3:self.${2:field} = self.${1}}

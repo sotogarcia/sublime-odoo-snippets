@@ -1,0 +1,17 @@
+<snippet>
+    <content><![CDATA[
+<div class="content-group mt8">
+    <button
+        name="%(${1:module}.${2:act_window})d"
+        string="${3:Caption}"
+        type="action"
+        class="oe_link"
+        icon="fa-arrow-right"
+    />
+</div>
+${0}
+]]></content>
+    <tabTrigger>arrow</tabTrigger>
+    <scope>text.xml</scope>
+    <description>ResConfigSettings extension</description>
+</snippet>

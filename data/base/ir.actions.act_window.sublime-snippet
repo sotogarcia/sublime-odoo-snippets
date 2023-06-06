@@ -5,11 +5,10 @@
     <field name="name">${1:Human readable name}</field>
     <field name="res_model">${2:model.name}</field>
     <field name="view_mode">${3:tree,form}</field>
-    <field name="view_type">${4:form}</field>
-    <field name="target">${5:current}</field>${7:
-    <field name="domain">[${6:}]</field>}${9:
-    <field name="context">${8:\{\}}</field>}${11:
-    <field name="search_view_id" ref="${10:ir.ui.view}" />}
+    <field name="target">${4:current}</field>${6:
+    <field name="domain">[${5:}]</field>}${8:
+    <field name="context">${7:\{\}}</field>}${10:
+    <field name="search_view_id" ref="${9:ir.ui.view}" />}
 </record>${0}
 ]]></content>
     <tabTrigger>ir.actions.act_window</tabTrigger>

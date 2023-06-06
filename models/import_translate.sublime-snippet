@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+from odoo.tools.translate import _${0}
+]]></content>
+    <tabTrigger>translate</tabTrigger>
+    <scope>source.python</scope>
+</snippet>
+
+

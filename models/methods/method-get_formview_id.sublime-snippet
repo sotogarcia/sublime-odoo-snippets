@@ -1,6 +1,5 @@
 <snippet>
     <content><![CDATA[
-@api.one
 @api.returns('ir.ui.view')
 def get_formview_id(self):
     """ Return an view id to open the document with.

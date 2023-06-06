@@ -5,7 +5,7 @@
     - Module: ${2:module}    Model: ${3:model}
     - Language field used to translate it: ${4:lang}
     - Report uses attachment: ${5:True}
-    - Report paperformat: ${6:report.paperformat_euro}
+    - Report paperformat: ${6:base.paperformat_euro}
     - View priority: ${7:16}    Active: ${8:True}
     - Action help: ${9:Something about ${1/(.)/\1/g}}
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -20,17 +20,27 @@
     <field name="active" eval="${8/(.)/\1/g}" />
     <field name="arch" type="xml">
         <t t-name="${2/(.)/\1/g}.view_${3/\./\_/g}_document_qweb">
-            <t t-call="report.external_layout">
-                <div class="page">
-                    ${0:<h2>Report title</h2>
-                    <p>This object's name is <span t-field="o.name"/></p>}
+
+            <div class="page">
+                <div class="oe_structure"/>
+
+                <div class="clearfix"></div>
+
+                <div class="row mt16 mb32">
+                    <section class="academy-post-test-test posted-test-body col-12">
+                        ${0:<h2>Report title</h2>
+                        <p>This object's name is <span t-field="o.name"/></p>}
+                    </section>
                 </div>
-            </t>
+
+                <div class="clearfix"></div>
+
+            </div> <!-- page -->
         </t>
     </field>
 </record>
 
-<!-- Report "${1/(.)/\1/g}" translate_doc template -->
+<!-- Report "${1/(.)/\1/g}" qweb template -->
 <record id="view_${3/\./\_/g}_qweb" model="ir.ui.view">
     <field name="name">${1/(.)/\1/g}</field>
     <field name="model">${3/(.)/\1/g}</field>
@@ -40,36 +50,33 @@
     <field name="active" eval="${8/(.)/\1/g}" />
     <field name="arch" type="xml">
         <t t-name="${2/(.)/\1/g}.view_${3/\./\_/g}_qweb">
-            <t t-call="report.html_container">
-                <t t-foreach="doc_ids" t-as="doc_id">
-                    <t t-raw="translate_doc(doc_id, doc_model, '${4/(.)/\1/g}', '${2/(.)/\1/g}.view_${3/\./\_/g}_document_qweb')"/>
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <t t-call="'${2/(.)/\1/g}.view_${3/\./\_/g}_document_qweb" />
+                    </t>
                 </t>
-            </t>
+            </t> <!-- t-html_container -->
         </t>
     </field>
 </record>
 
-<!-- Report action to show: "${1/(.)/\1/g}" -->
-<record id="action_report_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}" model="ir.actions.report.xml">
+
+
+<!-- Report action to show ${1/(.)/\1/g} qweb report -->
+<record id="action_report_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}" model="ir.actions.report">
     <field name="name">${1/(.)/\1/g}</field>
     <field name="model">${3/(.)/\1/g}</field>
     <field name="report_type">qweb-pdf</field>
-    <field name="report_name">${2/(.)/\1/g}.view_${3/\./\_/g}_qweb</field>
+    <field name="report_name">academy_timesheets.view_academy_timesheet_training_action_qweb</field>
+    <field name="print_report_name">(object.name)</field>
     <field name="attachment_use" eval="${5/(.)/\1/g}" />
     <field name="attachment">(object.name+'.pdf')</field>
     <field name="paperformat_id" ref="${6/(.)/\1/g}" />
     <field name="help">${9/(.)/\1/g}</field>
+    <field name="binding_model_id" ref="${2/(.)/\1/g}.model_${3/\./\_/g}" />
 </record>
 
-<!-- Button to print the report: "${1/(.)/\1/g}" -->
-<record id="${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}_values" model="ir.values">
-    <field name="name">${1/(.)/\1/g}</field>
-    <field name="model_id" ref="${2/(.)/\1/g}.model_${3/\./\_/g}" />
-    <field name="model">${3/(.)/\1/g}</field>
-    <field name="value" eval="'ir.actions.report.xml,' +str(ref('action_report_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}'))" />
-    <field name="key">action</field>
-    <field name="key2">client_print_multi</field>
-</record>
 ]]></content>
     <tabTrigger>fullreport</tabTrigger>
     <scope>text.xml</scope>

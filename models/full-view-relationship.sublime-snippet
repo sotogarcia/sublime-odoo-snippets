@@ -1,0 +1,91 @@
+<snippet>
+    <content><![CDATA[
+# -*- coding: utf-8 -*-
+###############################################################################
+#    License, author and contributors information in:                         #
+#    __openerp__.py file at the root folder of this module.                   #
+###############################################################################
+
+from odoo import models, fields
+from odoo.tools import drop_view_if_exists
+
+from logging import getLogger
+
+
+_logger = getLogger(__name__)
+
+
+class ${1:ModelName}Rel(models.Model):
+    """ ${2:This act as middle relation in many to many relationship between
+    ${8/(^.+)/$1/g} and ${16/(^.+)/$1/g}}
+    """
+
+    _name = '${3:${1/((^[A-Z])|([A-Z]))/(?2:\l$2)(?3:\.\l$3)/g}}.rel'
+    _description = u'${4:${1/((^[A-Z])|([A-Z]))/(?2:\u$2)(?3:\ \l$3)/g}}'
+
+    _order = '${5/(^.+)/$1/g} DESC, ${13/(^.+)/$1/g} DESC'
+
+    _auto = False
+
+    ${5:field_name} = fields.Many2one(
+        string='${6:${5/((^.)|(_id$)|(_(.)))/(?2:\u$2)(?3:)(?4:\ $5)/g}}',
+        required=True,
+        readonly=True,
+        index=True,
+        default=None,
+        help='${7:Related ${6/(^.+)/\l$1/g}}',
+        comodel_name='${8:model.name}',
+        domain=[${9}],
+        context=\{${10}\},
+        ondelete='${11:cascade}',
+        auto_join=${12:False}
+    )
+
+    ${13:field_name} = fields.Many2one(
+        string='${14:${13/((^.)|(_id$)|(_(.)))/(?2:\u$2)(?3:)(?4:\ $5)/g}}',
+        required=True,
+        readonly=True,
+        index=True,
+        default=None,
+        help='${15:Related ${14/(^.+)/\l$1/g}}',
+        comodel_name='${16:model.name}',
+        domain=[${17}],
+        context=\{${18}\},
+        ondelete='${19:cascade}',
+        auto_join=${20:False}
+    )
+
+    def prevent_actions(self):
+        actions = ['INSERT', 'UPDATE', 'DELETE']
+
+        BASE_SQL = '''
+            CREATE OR REPLACE RULE {table}_{action} AS
+                ON {action} TO {table} DO INSTEAD NOTHING
+        '''
+
+        for action in actions:
+            sql = BASE_SQL.format(table=self._table, action=action)
+            self.env.cr.execute(sql)
+
+    def init(self):
+        sentence = '''CREATE or REPLACE VIEW {} as ({})'''
+
+        drop_view_if_exists(self.env.cr, self._table)
+
+        self.env.cr.execute(sentence.format(self._table, self._view_sql))
+
+        self.prevent_actions()
+
+    # Raw sentence used to create new model based on SQL VIEW
+    _view_sql = '''
+        ${0}
+    '''
+
+]]></content>
+    <tabTrigger>relationship</tabTrigger>
+    <scope>source.python</scope>
+    <description>Odoo Python module file</description>
+</snippet>
+
+
+

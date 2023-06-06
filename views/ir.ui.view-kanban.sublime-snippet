@@ -1,0 +1,30 @@
+<snippet>
+    <content><![CDATA[
+<kanban class="${1:o_kanban_mobile}" default_group_by="${2:state}"
+    group_create="${3:1}" group_delete="${4:1}" group_edit="${5:1}"
+    archivable="${6:1}" records_draggable="${7:1}"${9: default_order="${8:name}"}${12:
+    quick_create="${10:1}" quick_create_view="${11:form_view_external_id}"}>
+
+    <field name="name" />
+
+    <templates>
+        <t t-name="kanban-box">
+            <div class="oe_kanban_global_click">
+                <div class="oe_kanban_details">
+                    <h4 class="o_ellipsis" t-att-title="record.name.raw_value">
+                        <field name="name"/>
+                    </h4>
+                </div>
+
+                ${0}
+
+            </div>
+        </t>
+    </templates>
+
+</kanban>
+]]></content>
+    <tabTrigger>kanban</tabTrigger>
+    <scope>text.xml</scope>
+    <description>The root element of the Kanban view with attributes</description>
+</snippet>

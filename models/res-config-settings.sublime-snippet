@@ -1,0 +1,22 @@
+<snippet>
+    <content><![CDATA[
+class ResConfigSettings(models.TransientModel):
+    """ Module configuration attributes
+    """
+
+    _inherit = ['res.config.settings']
+
+    ${2:field_name} = fields.Integer(
+        string='${3:${2/((^.)|(_(.)))/(?2:\u$2)(?3:\ $4)/g}}',
+        required=${4:False},
+        readonly=False,
+        index=False,
+        default=${5:0},
+        help=${6:False}
+    )
+${0}
+]]></content>
+    <tabTrigger>res.config.settings</tabTrigger>
+    <scope>source.python</scope>
+    <description>ResConfigSettings extension</description>
+</snippet>

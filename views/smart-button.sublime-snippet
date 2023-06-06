@@ -1,0 +1,11 @@
+<snippet>
+    <content><![CDATA[
+<button name="${1:python_method}" type="object" class="oe_stat_button oe_read_only" 
+    icon="${2:fa-icon}"${4: help="${3:help}"}>
+    <field name="${5:field_name}" widget="${6:statinfo}"${7: string="${7:field_name}"} />
+</button>
+]]></content>
+    <tabTrigger>smart</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Smart button to be added inside a ir.ui.view</description>
+</snippet>

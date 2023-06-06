@@ -1,6 +1,5 @@
 <snippet>
 	<content><![CDATA[
-@api.multi
 @api.depends('${1:depends}')
 def _compute_${2:field}(self):
     for record in self:

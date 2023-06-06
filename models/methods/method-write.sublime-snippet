@@ -1,18 +1,14 @@
 <snippet>
     <content><![CDATA[
 def write(self, values):
-    """
-        Update all record(s) in recordset, with new value comes as {values}
-        return True on success, False otherwise
-
-        @param values: dict of new values to be set
-
-        @return: True on success, False otherwise
+    """ ${1:Overridden method 'write'}
     """
 
-    result = super(${1:Model_Name}, self).write(values)${0}
+    parent = super(${2:model}, self)
+    result = parent.write(values)
 
     return result
+${0}
 ]]></content>
     <tabTrigger>crud</tabTrigger>
     <scope>source.python</scope>

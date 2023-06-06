@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+options="{${2:'no_quick_create': ${1:True},} ${4:'no_create': ${3:True},} ${6:'no_open': ${5:True}}}"${0}
+]]></content>
+    <tabTrigger>options</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Odoo field options</description>
+</snippet>

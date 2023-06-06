@@ -1,0 +1,31 @@
+<snippet>
+    <content><![CDATA[
+class ${1:ModelName}Report(models.AbstractModel):
+    """ ${2:Custom report behavior}
+    """
+
+    _name = 'report.${3:module}.${4:view_report_name_qweb}'
+    _description = u'${5:${1/((^[A-Z])|([A-Z]))/(?2:\u$2)(?3:\ \l$3)/g} report}'
+
+    _table='${6:${4/((^view_)|(_qweb))//g}}'
+
+    def _get_report_values(self, docids, data=None):
+
+        # get the report action back as we will need its data
+        act_report_obj = self.env['ir.actions.report']
+        report_name = '${3/(.)/\1/g}.${4/(.)/\1/g}'
+        report = act_report_obj._get_report_from_name(report_name)
+
+        # get the records selected for this rendering of the report
+        obj = self.env[report.model].browse(docids)
+
+        # return a custom rendering context
+        return {
+            'lines': docids.get_lines()
+        }
+    ${0}
+]]></content>
+    <tabTrigger>report.Model</tabTrigger>
+    <scope>source.python</scope>
+    <description>Odoo report model class</description>
+</snippet>
