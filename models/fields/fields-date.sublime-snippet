@@ -5,7 +5,7 @@ ${1:field_name} = fields.Date(
     required=${3:False},
     readonly=${4:False},
     index=${5:False},
-    default=${6:fields.Date.context_today()},
+    default=${6:lambda self: fields.Date.context_today(self)},
     help=${7:False}
 )${0}
 ]]></content>

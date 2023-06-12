@@ -16,8 +16,8 @@ def view_${1:name}(self):
 
     serialized = {
         'type': 'ir.actions.act_window',
-        'res_model': '${6:model}',
-        'target': '${7:current}',
+        'res_model': act_wnd.res_model,
+        'target': '${6:current}',
         'name': name,
         'view_mode': act_wnd.view_mode,
         'domain': domain,
