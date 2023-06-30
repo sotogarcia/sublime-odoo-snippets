@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+<pivot display_quantity="${1:1}" disable_linking="${2:0}"${4: default_order="${3:name ASC}"}>
+    <field name="${5:name}" type="row"/>
+    <field name="${6:create_date}"${8: interval="${7:month}"} type="col"/>
+    <field name="${9:field}" type="measure" />${0}
+</pivot>
+]]></content>
+    <tabTrigger>pivot</tabTrigger>
+    <scope>text.xml</scope>
+    <description>The root element of the pivot view with attributes</description>
+</snippet>

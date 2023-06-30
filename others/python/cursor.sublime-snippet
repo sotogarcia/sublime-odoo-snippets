@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+sql = '${0:SELECT * FROM res_users}'
+cursor = self.env.cr
+cursor.execute(sql)
+${1:result = cursor.dictfetchall()
+}${2:cursor.commit()
+}${3:self.env.invalidate_all()}
+]]></content>
+    <tabTrigger>cursor</tabTrigger>
+    <scope>source.python</scope>
+    <description>Most used cursor code</description>
+</snippet>
