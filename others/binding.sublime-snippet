@@ -1,0 +1,11 @@
+<snippet>
+    <content><![CDATA[
+<field name="binding_model_id" ref="${1:model_id}"/>
+<field name="binding_type">${2:action}</field>
+<field name="binding_view_types">${3:list,form}</field>
+]]></content>
+    <tabTrigger>bind</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common record definition for base.action.rule</description>
+</snippet>
+

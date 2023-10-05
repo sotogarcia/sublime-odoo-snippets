@@ -1,14 +1,13 @@
 <snippet>
 	<content><![CDATA[
-<record id="action_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}_server" model="ir.actions.server">
+<record id="action_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}" model="ir.actions.server">
     <field name="type">ir.actions.server</field>
     <field name="name">${1:Human readable name}</field>
-    <field name="model_id" ref="${2:ir.model}" />
-    <field name="condition" eval="${3:True}" />
-    <field name="sequence" eval="${4:5}" />
-    <field name="context" eval="${5:\{\}}" />
-    <field name="code">${6:action = self.browse(cr, uid, 1, context=context)}</field>
-</record>${0}
+    <field name="state">code</field>
+    <field name="model_id" ref="${2:model_id}" />
+    <field name="sequence" eval="${3:5}" />
+    <field name="code">${4:records.method()}</field>
+</record>
 ]]></content>
     <tabTrigger>ir.actions.server</tabTrigger>
     <scope>text.xml</scope>
