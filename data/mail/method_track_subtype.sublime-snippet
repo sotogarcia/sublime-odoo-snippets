@@ -1,0 +1,18 @@
+<snippet>
+    <content><![CDATA[
+def _track_subtype(self, init_values):
+    self.ensure_one()
+
+    if self.${2:field} == '${3:value}':
+        xid = '${0:mail_message_subtype.xmlid}'
+        result = self.env.ref(xid)
+    else:
+        _super = super(${1:ClassName}, self)
+        result = _super._track_subtype(init_values)
+
+    return result
+]]></content>
+    <tabTrigger>_track_subtype</tabTrigger> <!-- Este es el gatillo que usarás para invocar el snippet -->
+    <scope>source.python</scope> <!-- Ajusta este scope si quieres que sea específico para ciertos archivos XML -->
+    <description>Mail Message Subtype</description> <!-- Descripción que aparecerá cuando empieces a escribir el gatillo -->
+</snippet>

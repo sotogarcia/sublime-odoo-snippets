@@ -1,0 +1,20 @@
+<snippet>
+    <content><![CDATA[
+<record id="ir_cron_action_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}" model="ir.cron" forcecreate="True">
+    <field name="name">${1:Cron task name}</field>
+    <field name="active" eval="True"/>
+    <field name="user_id" ref="base.user_root"/>
+    <field name="interval_number">${2:1}</field>
+    <field name="interval_type">${3:hours}</field>
+    <field name="numbercall">-1</field>
+    <field name="doall" eval="False"/>
+    <field name="model_id" ref="${4:model_id}"/>
+    <field name="state">code</field>
+    <field name="code">${5:model.method_to_execute()}</field>
+    <field name="priority">5</field>${0}
+</record>
+]]></content>
+    <tabTrigger>ir.cron</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common ir.cron record definition</description>
+</snippet>
