@@ -1,0 +1,32 @@
+<snippet>
+    <content><![CDATA[
+
+<!-- Settings block: begin -->
+<block title="${1:Block title}" name="${2:module}_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}">
+
+  <setting string="${3:Left option title}" help="${4:Something about the ${3/(.*)/\l$1/g}.}">
+    <div class="content-group mt8">
+      ${0:<field name="option_id" class="oe_inline" widget="many2one"
+        options="{'no_quick_create': True, 'no_create': True, 'no_open': False}" />}
+    </div>
+  </setting>
+
+  <setting string="${5:Right option title}" help="${6:Something about the ${5/(.*)/\l$1/g}.}">
+    <div class="content-group mt8">
+        <button name="%(base.action_res_company_form)d"
+            string="&#160;Company" type="action"
+            class="oe_link" icon="fa-arrow-right"/>
+    </div>
+  </setting>
+
+</block>
+<!-- Settings block: end -->
+
+]]></content>
+    <tabTrigger>settings.block</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Block to display res.config.settings options under new title.</description>
+</snippet>
+
+
+

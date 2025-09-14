@@ -1,0 +1,20 @@
+<snippet>
+    <content><![CDATA[
+<record id="action_report_${1/(([A-Za-z0-9])|([^A-Za-z0-9]+))/(?2:\l$2)(?3:\_)/g}" model="ir.actions.report">
+    <field name="name">${1:Name}</field>
+    <field name="model">${2:model.name}</field>
+    <field name="report_type">${3:qweb-pdf}</field>
+    <field name="report_name">${4:module.report_external_id}</field>
+    <field name="print_report_name">${5:${4:module.report_external_id}}</field>${6:
+    <field name="multi" eval="${7:True}" />}${8:
+    <field name="paperformat_id" ref="${9:base.paperformat_euro}" />}${10:
+    <field name="attachment_use" eval="${11:False}" />}${12:
+    <field name="attachment">${13:(object.name+'.pdf')}</field>}${14:
+    <field name="help">${15:Report that presents information related to records of the ${2:model.name} model.}</field>}
+</record>${0}
+]]></content>
+    <tabTrigger>ir.actions.report</tabTrigger>
+    <scope>text.xml</scope>
+    <description>Common record definition for ir.actions.report</description>
+</snippet>
+

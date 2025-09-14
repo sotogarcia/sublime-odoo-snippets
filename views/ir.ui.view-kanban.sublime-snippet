@@ -1,30 +1,91 @@
 <snippet>
-    <content><![CDATA[
-<kanban class="${1:o_kanban_mobile}" default_group_by="${2:state}"
-    group_create="${3:1}" group_delete="${4:1}" group_edit="${5:1}"
-    archivable="${6:1}" records_draggable="${7:1}"${9: default_order="${8:name}"}${12:
-    quick_create="${10:1}" quick_create_view="${11:form_view_external_id}"}>
+  <content><![CDATA[
+<kanban string="${1:Your Model}" class="${2:o_kanban_small_column}"
+        default_group_by="${3:stage_id}" default_order="${4:name desc}"${5:
+        groups_draggable="${6:true}" records_draggable="${7:true}"}${8:
+        create="${9:true}" edit="${10:true}" delete="${11:true}"}${12:
+        group_create="${13:true}" group_edit="${14:true}" group_delete="${15:true}"}${16:
+        can_open="${17:true}" archivable="${18:true}"}${19:
+        on_create="${20:form|quick_create}" 
+        quick_create="${21:true}" quick_create_view="${22:module.view_external_id}"}${23:
+        highlight_color="${24:color}"}>
+  <templates>
+    <card>
+      <div class="o_kanban_record_title">
+        <field name="name"/>
+      </div>
+      <!-- Example: left border color picker if highlight_color="color" -->
+      <!-- <field name="color" widget="kanban_color_picker"/> -->
 
-    <field name="name" />
-
-    <templates>
-        <t t-name="kanban-box">
-            <div class="oe_kanban_global_click">
-                <div class="oe_kanban_details">
-                    <h4 class="o_ellipsis" t-att-title="record.name.raw_value">
-                        <field name="name"/>
-                    </h4>
-                </div>
-
-                ${0}
-
-            </div>
-        </t>
-    </templates>
-
+      <!-- Example: conditional decorations instead of highlight_color
+           <div t-attf-class="o_kanban_decoration
+                              #{record.state.raw_value == 'done'
+                                and 'decoration-success' or ''}">
+        <t t-esc="record.name.value"/>
+      </div> -->
+    </card>
+  </templates>
 </kanban>
 ]]></content>
-    <tabTrigger>kanban</tabTrigger>
-    <scope>text.xml</scope>
-    <description>The root element of the Kanban view with attributes</description>
+  <tabTrigger>od18-kanban-root</tabTrigger>
+  <scope>text.xml</scope>
+  <description>Odoo 18: Kanban root + card</description>
 </snippet>
+
+
+<!--
+DOC: Kanban root attributes (Odoo 18)
+
+Core
+- string (str, default ''):
+  View title. Usually not shown unless opening unnamed dialog actions.
+- class (str):
+  CSS classes on the root (e.g., 'o_kanban_small_column').
+- default_group_by (field name):
+  Field to group by when no grouping is set by action/search.
+- default_order (str):
+  Default sorting (e.g., 'name desc') until user changes it.
+
+Drag & drop (defaults = True)
+- groups_draggable (bool):
+  Allow reordering columns (stages) by drag.
+- records_draggable (bool):
+  Allow moving cards between columns when grouped.
+
+CRUD toggles (defaults = True; ACLs still apply)
+- create / edit / delete (bool):
+  Enable/disable create, edit, delete from the view UI.
+
+Column management (defaults = True)
+- group_create / group_edit / group_delete (bool):
+  Add column, rename/edit, delete column from column menu.
+
+Open behavior (default = True)
+- can_open (bool):
+  If False, clicking a card will not open the form view.
+
+Archive (default = True if model has 'active')
+- archivable (bool):
+  If False, hide archive/restore options in column menu.
+
+Creation mode
+- on_create ('', 'form', 'quick_create'):
+  Action when clicking "Create". Use 'form' to force full form.
+  'quick_create' uses the inline mini-form if enabled.
+- quick_create (bool, default depends on grouping):
+  Enabled by default when grouped by many2one/selection/char/bool;
+  set to False to force full form creation.
+- quick_create_view (xmlid, default = ''):
+  Form view to render in quick create (only if quick_create is used).
+
+Coloring
+- highlight_color (field name, Integer recommended):
+  Field used to color the left bar of cards. Commonly 'color'.
+  Pair with <field name="color" widget="kanban_color_picker"/>.
+
+Notes
+- Keep the XML minimal: only set attributes when you need to
+  override defaults or enforce policy.
+- Prefer decorations (decoration-success / -warning / -danger)
+  for status hints; use highlight_color for user-selectable color.
+-->

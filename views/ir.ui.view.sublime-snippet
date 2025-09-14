@@ -1,13 +1,15 @@
 <snippet>
 	<content><![CDATA[
-<record id="view_${2/[^a-z]+/\_/g}_${3}" model="ir.ui.view">
-    <field name="name">${1:Human readable name}</field>
+<record id="view_${2/\./\_/g}_${1:type}_${3:primary}_${4:16}" model="ir.ui.view">
+    <field name="name">${2/(.+)/\L\1/}.${1/(.+)/\L\1/}${3/(.+)/.\L\1/}.${4:16}</field>
     <field name="model">${2:model.name}</field>
-    <field name="type">${3:tree}</field>
-    <field name="mode">${4:primary}</field>
-    <field name="priority" eval="${5:16}" />
-    <field name="active" eval="${6:True}" />${8:
-    <field name="inherit_id" ref="${7:xml_id}" />}
+    <field name="mode">${3:primary}</field>
+    <field name="priority" eval="${4:16}"/>
+    <field name="active" eval="${6:True}"/>${7:
+    <!-- Optional: restrict by groups -->
+    <field name="groups_id" eval="[(6, 0, [ref('${8:base.group_user}')])]"/>}${9:
+    <!-- Optional: inherit from another view -->
+    <field name="inherit_id" ref="${10:module.view_external_id}"/>}
     <field name="arch" type="xml">
         ${0}
     </field>
@@ -19,22 +21,79 @@
 </snippet>
 
 <!--
-HELP:
+HELP: ir.ui.view snippet guide (Odoo 18)
 
-- Valid view types:
-	- kanban
-	- search
-	- form
-	- diagram
-	- qweb
-	- calendar
-	- tree
+1) Naming conventions
+   - id:     "view_<model_underscored>_<type>_<variant>_<priority>"
+             e.g. view_academy_course_form_primary_16
+   - name:   "<model.dotted>.<type>[.<variant>].<priority>"
+             e.g. academy.course.form.primary.16
+   - Keep lowercase, no spaces, no semicolons.
 
-- Valid modes:
-	- extension
-	- primary
+2) Valid view types
+   - Form
+     Display and edit the data from a single record.
+   - List
+     View and edit multiple records.
+   - Search
+     Apply filters and perform searches. The results are displayed
+     in the current list, kanban… view.
+   - Kanban
+     Display records as “cards”, configurable as a small template.
+   - Qweb
+     Templating of reporting, website…
+   - Graph
+     Visualize aggregations over a number of records or record groups.
+   - Pivot
+     Display aggregations as a pivot table.
+   - Calendar
+     Display records as events in a daily, weekly, monthly,
+     or yearly calendar.
+   - Cohort (Enterprise)
+     Display and understand the way some data changes over a period.
+   - Gantt (Enterprise)
+     Display records as a Gantt chart.
+   - Grid (Enterprise)
+     Display computed information in numerical cells;
+     are hardly configurable.
+   - Map (Enterprise)
+     Display records on a map, and the routes between them.
 
+3) Mode (optional, informational)
+   - primary
+   - extension
+   Notes:
+     * Not required by Odoo 18, but harmless if you keep it
+       for documentation/sorting purposes.
+
+4) Optional fields
+   - groups_id (many2many):
+       <field name="groups_id"
+              eval="[(6, 0, [ref('base.group_user')])]"/>
+   - inherit_id (many2one):
+       <field name="inherit_id" ref="module.view_external_id"/>
+     DO NOT use many2many syntax for inherit_id.
+
+5) Minimal records
+   Required (practical): name, model, arch
+   Recommended: priority (int), active=True
+   Optional: mode, groups_id, inherit_id
+
+6) Arch basics by type
+   - <form string="Title"> ... </form>
+   - <tree string="Title"> <field name="..."/> </tree>
+     * Use create="false" / edit="false" only when needed.
+   - <search> <field name="..."/> <filter .../> </search>
+   - <kanban> <templates> <t t-name="..."> ... </t> </templates> </kanban>
+     * For modern kanban, prefer <card> when applicable in 18.
+   - <calendar date_start="..." date_stop="..."> ... </calendar>
+
+8) Inheritance (xpath)
+   - Always use inherit_id (many2one ref)
+   - Common xpaths:
+       <xpath expr="//form/sheet" position="inside"> ... </xpath>
+       <xpath expr="//field[@name='name']" position="after"> ... </xpath>
+   - Keep changes minimal; avoid broad selectors when not needed.
+
+End of HELP.
 -->
-
-<!-- <field name="field_parent" eval="False" /> -->
-<!--<field name="model_data_id"></field>-->
