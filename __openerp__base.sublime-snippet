@@ -6,7 +6,7 @@
 #    Odoo, Open Source Management Solution
 #
 #    Copyright (c) All rights reserved:
-#        (c) 2015  $TM_FULLNAME
+#        (c) 2015  ${1:Author}
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -23,49 +23,79 @@
 #
 ###############################################################################
 {
-    'name': '${1:Human readable name}',
-    'summary': '${2:${1}} Module Project',
-    'version': '1.0',
-
+    'name': '${2:Human readable name}',
+    'version': '18.0.1.0.0',
+    'summary': '${3:Short, one-line summary}',
     'description': """
-${3:${1}} Module Project.
-==============================================
+${2:/(.*)/\1/s}
+===================
 
-${4}
+${3:/(.*)/\1/s}
+
+This module extends the functionality of Odoo by providing additional
+features, models, and views that can be easily integrated into existing
+applications.
+
+Key Features
+------------
+- Easy to install, configure, and use.
+- Fully compatible with Odoo core modules.
+- Designed to follow Odoo development best practices.
+- Can be extended or customized to fit specific business needs.
+
+Intended Audience
+-----------------
+- **Developers** who want a clean starting point for building new features.
+- **Functional consultants** who need to adapt Odoo to customer requirements.
+- **End users** looking for extended functionality in daily operations.
+
+Benefits
+--------
+This module is part of a customizable and scalable solution that helps
+improve productivity, streamline processes, and enhance the user experience
+across the Odoo platform.
     """,
-
-    'author': '${5:$TM_FULLNAME}',
-    'maintainer': '${5}',
-    'contributors': ['${6:${5} <${5}@gmail.com>}'],
-
-    'website': 'http://www.gitlab.com/${7:${5}}',
-
+    'author': '${1:Author}',
+    'website': 'https://github.com/${4}',
     'license': 'AGPL-3',
-    'category': 'Uncategorized',
-
+    'category': '${5:Uncategorized}',${6:
+    'maintainer': '${7:maintainer}',}${8:
+    'contributors': ['${9: maintainer <maintainer@domain>}'],}
     'depends': [
         'base'
     ],
     'external_dependencies': {
         'python': [
         ],
+        "bin": [
+            # "wkhtmltopdf",
+        ],
     },
     'data': [
     ],
     'demo': [
     ],
-    'js': [
-    ],
-    'css': [
-    ],
-    'qweb': [
-    ],
-    'images': [
-    ],
-    'test': [
-    ],
-
-    'installable': True
+    "assets": {
+        # Common assets (shared by backend, website, PoS...)
+        "web.assets_common": [],
+        # Backend (web client) assets
+        "web.assets_backend": [],
+        # Public website / portal assets
+        "web.assets_frontend": [],
+        # Common report assets (shared by HTML/PDF reports)
+        "web.report_assets_common": [],
+        # PDF-specific report assets (applied only to PDF rendering)
+        "web.report_assets_pdf": [],
+        # QWeb report templates (XML templates for reports)
+        "web.report_assets_xml": [],
+        # JS test bundles (QUnit)
+        "web.qunit_suite_tests": [],
+        # Mobile-specific QUnit test assets (testing mobile UI components)
+        "web.qunit_mobile_suite_tests": [],
+    },
+    "application": False,  # True only for top-level apps
+    "installable": True,  # visible in Apps
+    "auto_install": False,  # or True / or a subset of depends
 }${0}
 ]]></content>
     <tabTrigger>__openerp__</tabTrigger>

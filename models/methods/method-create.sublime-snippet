@@ -1,12 +1,12 @@
 <snippet>
     <content><![CDATA[
-@api.model
-def create(self, values):
+@api.model_create_multi
+def create(self, value_list):
     """ ${1:Overridden method 'create'}
     """
 
     parent = super(${2:model}, self)
-    result = parent.create(values)
+    result = parent.create(value_list)
 
     return result
 ${0}
